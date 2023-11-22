@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="1" author="postgres">
+
+        <createTable tableName="users">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="user_id_pk"/>
+            </column>
+            <column name="name" type="varchar(250)">
+            </column>
+            <column name="email" type="varchar(250)" ></column>
+        </createTable>
+
+        <addAutoIncrement
+                          columnName="id"
+                          defaultOnNull="false"
+                          generationType="IDENTITY"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="users"/>
+
+        <insert tableName="users">
+            <column  name="id"  value="4"/>
+            <column  name="name"  value="namename"/>
+            <column  name="email"  value="mail@mail.mail"/>
+        </insert>
+
+    </changeSet>
+
+    <include file="changeset/change1.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
